@@ -1,10 +1,14 @@
 @import "mixins.scss";
 @import "Variables.scss";
-*{
+body{
     margin: 0;
     padding: 0;
-    background-color:black;
-    overflow-x: hidden;
+    background-color: $bgColor;
 }
-
+b{
+    font-weight: 800px;
+}
+main{
+    margin: 30px 100px;
+}
 

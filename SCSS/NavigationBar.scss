@@ -1,3 +1,55 @@
+@import "mixins.scss";
+@import "Variables.scss";
 header{
-    width: max(1316px, 1719);
+    width: max(1316px, 1719px);
+    background-color: $blockColor;
+    border-radius: 20px;
+    height: 83px;
+    display: flex;
+    align-items: center;
+    .header_logo{
+        display: flex;
+        gap: 34px;
+        .logo{
+            font-weight: 300;
+            font-size: 36px;
+            font-family: $mainFont;
+            color: $logoColor;
+        }
+        nav{
+            ul{
+                padding: 0;
+                display: flex;
+                gap: 34px;
+                li{
+                    list-style: none;
+                    .link{
+                        text-decoration: none;
+                        
+                        &:hover .link_text{
+                            color: $redColor;
+                        }
+                        &:hover .link_line{
+                            width: $widthLink;
+                        }
+                        .link_text{
+                            font-weight: 400;
+                            font-size: 20px;
+                            font-family: $mainFont;
+                            color: $textColor;
+                            transition: all 0.4s ease-in;
+                        }
+                        .link_line{
+                            margin-top: 5px;
+                            width: 0;
+                            height: 5px;
+                            background-color: $redColor;
+                            transition: width 0.4s ease-in;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
 }

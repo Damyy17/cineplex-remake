@@ -1,3 +1,49 @@
 header {
-  width: 1719;
+  width: 1719px;
+  background-color: #3D484C;
+  border-radius: 20px;
+  height: 83px;
+  display: flex;
+  align-items: center;
+}
+header .header_logo {
+  display: flex;
+  gap: 34px;
+}
+header .header_logo .logo {
+  font-weight: 300;
+  font-size: 36px;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+}
+header .header_logo nav ul {
+  padding: 0;
+  display: flex;
+  gap: 34px;
+}
+header .header_logo nav ul li {
+  list-style: none;
+}
+header .header_logo nav ul li .link {
+  text-decoration: none;
+}
+header .header_logo nav ul li .link:hover .link_text {
+  color: #E84A5F;
+}
+header .header_logo nav ul li .link:hover .link_line {
+  width: auto;
+}
+header .header_logo nav ul li .link .link_text {
+  font-weight: 400;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease-in;
+}
+header .header_logo nav ul li .link .link_line {
+  margin-top: 5px;
+  width: 0;
+  height: 5px;
+  background-color: #E84A5F;
+  transition: width 0.4s ease-in;
 }/*# sourceMappingURL=NavigationBar.css.map */

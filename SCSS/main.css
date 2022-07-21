@@ -1,6 +1,13 @@
-* {
+body {
   margin: 0;
   padding: 0;
-  background-color: black;
-  overflow-x: hidden;
+  background-color: #2A363B;
+}
+
+b {
+  font-weight: 800px;
+}
+
+main {
+  margin: 30px 100px;
 }/*# sourceMappingURL=main.css.map */
