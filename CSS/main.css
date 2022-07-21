@@ -1,3 +1,11 @@
 * {
   margin: 0;
+  overflow-x: hidden;
+  font-size: 10px;
+  background-color: white;
+}
+@media (min-width: 275px) {
+  * {
+    background-color: black;
+  }
 }
