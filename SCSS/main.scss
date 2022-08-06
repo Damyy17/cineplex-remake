@@ -4,11 +4,327 @@ body{
     margin: 0;
     padding: 0;
     background-color: $bgColor;
+    overflow-x: hidden;
 }
 b{
     font-weight: 800px;
 }
 main{
-    margin: 30px 100px;
+    margin: 30px max(50px, 5.2vw);
+    @include lg{
+        margin: 20px max(10px, 2.6vw);
+    }
 }
+.main_object{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    gap: 30px;
+    @include lg{
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 100%;
+        gap: 16px;
+    }
+}
+.text_information{
+    font-size: 14px;
+    font-family: $mainFont;
+    font-weight: 300;
+    color: $logoColor;
+}
+.slider_block{
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    @include sm{
+        justify-content: center;
+        align-items: center;
+    }
+    .slides{
+        border-radius: 20px;
+        overflow: hidden;
+        width: max(895px,60vw);
+        height: 500px;
+        @include md{
+            width: 100%;
+        }
+        @include sm{
+            width: 100%; /* 694/817 */
+            height: max(400px, 80vw);
+        }
+        .slide_muve{
+            display: grid;
+            grid-template-columns: 100% 100% 100% 100% 100%;
+            .slide{
+                width: 100%;
+                height: 500px;
+                @include sm{
+                    height: max(400px, 100vw);
+                }
+                &.nr1{
+                    background:linear-gradient(358.58deg, #000000 1.14%, rgba(0, 0, 0, 0) 98.73%), url(../Images/FilmsPosters/DoctorSrange.jpg) top center no-repeat;
+                    background-size: cover;
+                }
+                &.nr2{
+                    background:linear-gradient(358.58deg, #000000 1.14%, rgba(0, 0, 0, 0) 98.73%), url(../Images/FilmsPosters/minions.jpg) center no-repeat;
+                    background-size: cover;
+                }
+                &.nr3{
+                    background:linear-gradient(358.58deg, #000000 1.14%, rgba(0, 0, 0, 0) 98.73%), url(../Images/FilmsPosters/JurasicWorld.jpg) no-repeat;
+                    background-size: cover;
+                }
+                &.nr4{
+                    background:linear-gradient(358.58deg, #000000 1.14%, rgba(0, 0, 0, 0) 98.73%), url(../Images/FilmsPosters/Thor.jpg) no-repeat;
+                    background-size: cover;
+                }
+                &.nr5{
+                    background:linear-gradient(358.58deg, #000000 1.14%, rgba(0, 0, 0, 0) 98.73%), url(../Images/FilmsPosters/Elvis.jpg) center no-repeat;
+                    background-size: cover;
+                }
+            }
+        }
+    }
+    .slider_menu{
+        margin: 210px 0  0 30px;
+        height: 213px;
+        width: 300px;
+        position: absolute;
+        background: linear-gradient(79.3deg, rgba(255, 255, 255, 0.2) 9.5%, rgba(255, 255, 255, 0) 78.49%), rgba(217, 217, 217, 0.3);
+        backdrop-filter: blur(33px); 
+        border-radius: 20px;
+        padding: 23px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        @include sm{
+            position: relative;
+            align-items: center;
+            padding: 15px 0;
+            width: 95%;
+            height: auto;
+            margin: -180px 0 0 0 ;
+        }
+        .menu_text_muve{
+            width: 100%;
+            overflow: hidden;
+            .menu_muve{
+                display: grid;
+                grid-template-columns: 100% 100% 100% 100% 100%;
+                .menu_text{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 7px;
+                    @include sm{
+                        align-items: center;
+                    }
+                    p:first-child{
+                        display: flex;
+                        width: 100%;
+                        font-weight: 200;
+                        margin: 0;
+                        font-family: $mainFont;
+                        font-size: 36px;
+                        line-height: 100%;
+                        color: $logoColor;
+                        @include sm{
+                            justify-content: center;
+                            font-size:max(1.5rem, 5vw);
+                        }
+                    }
+                    p:last-child{
+                        font-weight: 300;
+                        margin: 0;
+                        font-family: $mainFont;
+                        font-size: 16px;
+                        line-height: 100%;
+                        color: $logoColor;
+                        @include sm{
+                            align-items: center;
+                            font-size:max(.75rem, 2.5vw);
+                        }
+                    }
+                }
+            }
+        }
+        .dots_block{
+            display: flex;
+            gap:7px;
+            .dot{
+                transition: all 0.5s ease-in;
+                width: 24px;
+                height: 24px;
+                background-color: $blockColorNr2;
+                opacity: 1;
+                border-radius: 50%;
+                cursor: pointer;
+                transform: translateX();
+                &:hover{
+                    opacity: 0.5;
+                    background-color: $dotColor;
+                }
+                &.active{
+                    background-color: $dotColor
+                }
+            }
+        }
+        button{
+            @include Button(16px);
+            width: 151px;
+            @include sm{
+                padding: 2vw 4vw;
+            }
+        }
+    }
 
+}
+.deals_block{
+    margin: 16px 0 0 0 ;
+    display: flex;
+    gap: 24px;
+    flex-wrap: nowrap;
+    @include sm{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+    }
+    a{
+        text-decoration: none;
+    }
+    .deal{
+        cursor: pointer;
+        padding: max(5px,.78vw) max(20px, 1.35vw);
+        width: max(190px,12.5vw);
+        height: max(100px,5.2vw);
+        background-color: $blockColor;
+        display: flex;
+        gap: 10px;
+        border-radius: 20px;
+        transform: translateY(0) rotate(0);
+        transition: all 0.5s;
+        align-items: center;
+        @include sm{
+            justify-content: space-between;
+            gap: 10px;
+            width: max(190px, 80vw);
+            padding: max(5px,1.78vw) max(20px, 2.35vw);
+        }
+        &:hover{
+            transform:translateY(-10px) rotate(-5deg);
+        }
+        .deal_line{
+            width: 5.96px;
+            height: 58.74px;
+            background-color: $burgerlinecolor;
+            border-radius: 20px;
+        }
+        .deal_text{
+            font-family: $mainFont;
+            font-size: max(16px, 1.125vw);
+            font-weight: 300;
+            color: $mainTextColor;
+            @include sm{
+                font-size: max(16px, 5vw);
+            }
+        }
+        .deal_icon_back{
+            width: max(100px, 6vw);
+            height: max(68px, 4vw); /* 88px/1920 */
+            background-color: $yellowColor;
+            border-radius: 20px;
+            @include sm{
+                width: max(86px, 4vw);
+                height: max(68px, 4vw); 
+            }
+            &.back2{
+                background-color:$greenColor;
+            }
+            &.back3{
+                background-color:$orangeColor;
+            }
+            .deal_icon{
+                position: absolute;
+                width: max(120px, 6.6vw);
+                height: max(88px, 5.6vw);
+                margin: -20px -20px;
+            }
+        }
+    }
+}
+.main_news{
+    margin: 16px 0 0 0;
+    .filtre_information{
+        margin: 16px 0;
+    }
+    .new_blocks{
+        margin: 16px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+    }
+    .new_block{
+        width: max(300px,26vw);
+        height: 209px;
+        background-size: cover;
+        border-radius: 20px;
+        &:nth-child(1){
+            background: url(../Images/SocialMediaIcons/news_nr1.svg) no-repeat $orangeColor;
+            background-size: cover;
+        }
+        &:nth-child(2){
+            background: url(../Images/SocialMediaIcons/news_nr2.svg) no-repeat $redColor;
+            background-size: cover;
+        }
+        &:nth-child(3){
+            background: url(../Images/SocialMediaIcons/news_nr3.svg) no-repeat $yellowColor;
+            background-size: cover;
+        }
+        .new_segment_block{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 0;
+            padding: 16px;
+            background: rgba(42, 54, 59, 0.6);
+            backdrop-filter: blur(17px);
+            width: 200px;
+            height: 140px;
+            border-radius: 25px;
+            transform: translateX(10px) translateY(25px);
+            .new_dots{
+                margin: 0;
+                width: 40px;
+                height: 10px;
+            }
+            .main_text{
+                margin: 0;
+                font-family: $mainFont;
+                color: $mainTextColor;
+                font-weight: 400;
+                font-size: 14px;
+            }
+            .new_line{
+                margin: 0;
+                background-color: $burgerlinecolor;
+                width: 180px;
+                height: 1px;
+                opacity: .6;
+            }
+            .text{
+                margin: 0;
+                font-family: $mainFont;
+                color: $mainTextColor;
+                font-weight: 300;
+                font-size: 12px;
+            }
+            button{
+                @include Button(12px);
+                padding: 6px 26px;
+                width: 80px;
+
+            }
+        }
+    }
+}

@@ -1,36 +1,124 @@
 @import "mixins.scss";
 @import "Variables.scss";
+@import "keyframes.scss";
 header{
-    width: max(1316px, 1719px);
+    width: minmax(1719px);
     background-color: $blockColor;
     border-radius: 20px;
     height: 83px;
     display: flex;
     align-items: center;
-    .header_logo{
-        display: flex;
-        gap: 34px;
+    gap: 34px; 
+    @include lg{
+        justify-content: space-between;
+    }
+    @include sm{
+        height: 57px;
+    }
         .logo{
+            margin-left: 34px;
             font-weight: 300;
             font-size: 36px;
             font-family: $mainFont;
             color: $logoColor;
+            height: 50px;
+            @include sm{
+                font-size: 24px;
+                height: 30px;
+            }
         }
+        .header_links{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            overflow: hidden;
+            @include lg{
+                z-index: -10;
+                transition: all 0.4s ease-in;
+                position: absolute;
+                flex-direction: column;
+                background-color: $blockColor;
+                padding: 22px 40px;
+                border-radius: 20px;
+                width: auto;
+                margin-top: 500px; 
+                transform: translateX(-50px);
+                gap: 45px;
+                opacity: 0;
+                &.active{
+                    opacity: 1;
+                    z-index: 100;
+                    transform: translateX(0);
+            }
+        }
+        @include sm{
+            margin-top: 445px;
+                width: 170px;
+            }
         nav{
+            height: 50px;
+            display: flex;
+            align-items: center;
+            @include lg{
+                flex-direction: column;
+                height: auto;
+            }
+           
             ul{
+                margin: 0;
                 padding: 0;
                 display: flex;
-                gap: 34px;
+                align-items: center;
+                gap: 34px; 
+                @include lg{
+                    align-items: flex-start;
+                    gap: 25px; 
+                    flex-direction: column;}
                 li{
+                    height: 24px;
+                    @include lg{
+                        transition: all 0.5s 0.4s ease-in;
+                        
+                        opacity: 0;
+                        transform: translateX(-20px);
+                    }
                     list-style: none;
+                    
+                    &.active{
+                        transform:translateX(0);
+                        opacity: 1;
+                    }
                     .link{
                         text-decoration: none;
-                        
+                        @include lg{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
+                        }
+                        &:hover .link_text_icon{
+                            fill:$redColor;
+                        }
+                        .link_text_icon{
+                            width: auto;
+                            height: 29px;
+                            fill: $logoColor;
+                            transition: all 0.4s ease-in;
+                            display: none;
+                            @include lg{
+                                display: block;
+                            }
+                        }
                         &:hover .link_text{
                             color: $redColor;
                         }
-                        &:hover .link_line{
-                            width: $widthLink;
+                        &:hover .link_line[name = smoll_line]{
+                            width: 55px;
+                        }
+                        &:hover .link_line[name = long_line]{
+                            width: 145px;
+                        }
+                        &:hover .link_line[name = midle_line]{
+                            width: 70px;
                         }
                         .link_text{
                             font-weight: 400;
@@ -38,6 +126,9 @@ header{
                             font-family: $mainFont;
                             color: $textColor;
                             transition: all 0.4s ease-in;
+                            display: flex;
+                            align-items: center;
+                            gap: 16px;
                         }
                         .link_line{
                             margin-top: 5px;
@@ -45,11 +136,239 @@ header{
                             height: 5px;
                             background-color: $redColor;
                             transition: width 0.4s ease-in;
+                            border-radius: 20px;
+                            @include lg{
+                                display: none;
+                           }
                         }
+                        
+                        .line{
+                            margin: 10px 0 0 5px;
+                            display: none;
+                            width: 159px;
+                            height: 1px;
+                            opacity: 0.5;
+                            background-color: $textColor;
+                            @include lg{
+                         display: block;
                     }
-
+                    }
+                }
                 }
             }
+        }
+    .header_login_socialmedia{
+        transition: all 0.5s 0.4s ease-in;
+        margin: 0 34px 0 0;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        @include lg{ 
+            transform: translateY(50px);
+            opacity: 0;
+            flex-direction: column;
+            margin: 0;
+        }
+        &.active{
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .social_media_icons{
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            a{
+            .link_icons{
+                width: 40px;
+                height: 40px;
+                fill: $logoColor;
+                transition: all 0.4s ease-in;
+                &:hover{
+                fill: $redColor;
+                }
+               }
+            }
+        }
+        .Log_in{
+            @include Button(20px)
+        }
+
+    }
+  }
+  .burger{
+    margin: 0 34px 0 0;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    @include sm{
+        gap: 5px;
+    }
+    @include lg{
+        display: flex;
+    }
+    .line{
+        width: 42px;
+        height: 6px;
+        @include sm{
+            width: 29px;
+            height: 4px;
+        }
+        background-color: $burgerlinecolor;
+        border-radius: 20px;
+    }
+    .lineNr1{
+        transition: all 0.5s ease-in;
+        position: relative;
+        transform: rotate(0);
+        &.active{
+            position: absolute;
+            transform: rotate(-45deg);
+            background-color: $redColor;
+            height: 8px;
+            @include sm{
+                height: 5px;
+            }
+        }
+    }
+    .lineNr2{
+        transition: all 0.5s ease-in;
+        opacity: 1;
+        &.active{
+            opacity: 0;
+        }
+    }
+    .lineNr3{
+        transition: all 0.5s ease-in;
+        position: relative;
+
+        transform: rotate(0);
+        &.active{
+            position: absolute;
+            transform: rotate(45deg);      
+            height: 8px;  
+            @include sm{
+                height: 5px;
+            }
+        }
+    }
+  }
+}
+.filtre_block{
+    margin-top: 16px;
+    ul{
+        padding: 0;
+        display: flex;
+        gap:max(5px, 1.125vw);
+        @include lg{
+            gap: 10px;
+        }
+        @include sm{
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+        li{
+            list-style: none;
+            background-color: $blockColor;
+            border-radius: 20px;
+        }
+    }
+}
+.filtre_information{
+    font-size: 14px;
+    font-family: $mainFont;
+    font-weight: 600;
+    color: $logoColor;
+}
+.filtre_text{
+    display: flex;
+    gap: 5px;
+    border-radius: 20px;
+    padding: 12px 30px;
+    background-color: $blockColor;
+    color:$mainTextColor;
+    font-family: $mainFont;
+    font-size: 16px;
+    height: 15px;
+    @include sm{
+        width: auto;
+        font-size: 16px;
+        padding: 15px 10px;
+        justify-content: center;
+    }
+    .nule_block{
+        display: block;
+        @include md{
+            display: none;
+        }
+    }
+}
+.filtre_icon{
+    margin-left: 5px;
+    width: 21px;
+    height: 21px;
+    fill: $redColor;
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+    transform: rotate(0deg);
+    animation: none;
+    &.active{
+        transform: rotate(180deg);
+        animation: filtre_Icon 0.5s;
+    }
+    @include sm{
+        margin-left: 2px;
+    }
+    }
+.filtre_line{
+    transition: all 0.5s ease-in;
+    width: 200px;
+    height: 5px;
+    background-color: $redColor;
+    transform: translateY(0);
+    border-radius: 20px;
+    opacity: 0;
+    &[name = long_line]{
+        width: 300px;
+    }
+    &.active{
+        opacity: 1;
+        transform: translateY(13px);
+    }
+    @include md{
+        width: 120px;
+    }
+}
+.filtre_menu{
+    transition: all 0.5s ease-in;
+    position: absolute;
+    padding: 20px 20px;
+    background-color: $blockColor;
+    display: flex;
+    transform: translateY(9px);
+    border-radius: 20px;
+    flex-direction: column;
+    opacity: 0;
+    gap:10px;
+    z-index: 100;
+    a{
+        text-decoration: none;
+    }
+    &.active{
+        transform: translateY(22px);
+        opacity: 1;
+    }
+    .filtre_menu_item{
+        margin-bottom: 10px;
+        padding: 6px 45px;
+        border-radius: 20px;
+        background-color: $blockColorNr2;
+        font-family: $mainFont;
+        color: $mainTextColor;
+        opacity: 0.7;
+        transition: all 0.5s ease-in;
+        &:hover{
+            opacity: 1;
+            background-color: $redColor;
         }
     }
 }
